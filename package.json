@@ -1,0 +1,23 @@
+{
+  "name": "prosemirror-inside-shadow-dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "sirv --no-clear --dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehShrike/prosemirror-inside-shadow-dom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TehShrike/prosemirror-inside-shadow-dom/issues"
+  },
+  "homepage": "https://github.com/TehShrike/prosemirror-inside-shadow-dom#readme",
+  "dependencies": {
+    "sirv-cli": "^2.0.2"
+  }
+}

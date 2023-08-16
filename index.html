@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+
+    <style type="text/css">
+      body {
+        background-color: lightgray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .editable {
+        background: white;
+        width: 100%;
+        height: 1em;
+      }
+
+      .container {
+        width: 100%;
+      }
+      .container, p {
+        max-width: 400px;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <script type=module>
+      const container = document.getElementById('shadow-container')
+      const shadow = container.attachShadow({mode:'closed'})
+      shadow.innerHTML = `
+        <style>
+          .editable {
+            background: white;
+            width: 100%;
+            height: 1em;
+          }
+        </style>
+        <div contenteditable class=editable><br/></div>
+      `
+    </script>
+
+    <h1>This is the version inside of a shadow dom</h1>
+    <div id=shadow-container class=container>
+      <workshop-editor></workshop-editor>
+    </div>
+
+    <h1>This is the same thing, but not inside the shadow dom</h1>
+    <div class=container>
+      <div contenteditable class=editable><br/></div>
+    </div>
+
+    <p>
+      Set focus inside of each of them and try hitting Cmd+Left to set focus to the beginning of the line (or Cmd+Shift+Left to select to the beginning of the line).
+    </p>
+    <p>
+      <strong>Expected behavior:</strong> focus should move to the left side of the contenteditable element.
+    </p>
+    <p>
+      <strong>Observed behavior:</strong> in the version inside the shadow dom, the cursor does not move, and the keypress is handled by the browser – in the case of Cmd+Left, the browser navigates to the previous location in the browser history.
+    </p>
+
+    <a href="https://github.com/TehShrike/firefox-keyboard-shortcuts-in-contenteditable-inside-shadow-dom">More details in the repro repo readme</a>
+  </body>
+</html>
